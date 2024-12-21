@@ -1,0 +1,22 @@
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.bg-dark {
+  --bs-body-bg: #212529;
+  --bs-body-color: #f8f9fa;
+}
+
+body.bg-light {
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #212529;
+}
+
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}

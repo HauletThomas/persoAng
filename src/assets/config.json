@@ -1,0 +1,24 @@
+{
+  "instances": [
+    { "name": "Instance1", "dependencies": ["Instance2"], "model_type": "category:model" },
+    { "name": "Instance2", "dependencies": [], "model_type": "default:model" }
+  ],
+  "config": {
+    "graph": {
+      "color": {
+        "default": "#cccccc",
+        "category:model": "#ff0000"
+      },
+      "group": [
+        { "category": ["default"], "shape": "circle" },
+        { "category": ["category"], "shape": "square" }
+      ]
+    }
+  },
+  "state": {
+    "graphName": {
+      "Instance1": { "x": 100, "y": 100 },
+      "Instance2": { "x": 500, "y": 300 }
+    }
+  }
+}

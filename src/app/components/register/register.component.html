@@ -1,0 +1,114 @@
+<div class="theme-toggle text-end me-3 mt-3" [ngClass]="{'bg-dark text-light': isDarkMode}">
+  <button class="btn btn-secondary" (click)="toggleTheme()">
+    <i [class]="isDarkMode ? 'fa fa-sun' : 'fa fa-moon'"></i>
+    <span class="ms-2">{{ isDarkMode ? "Light Mode" : "Dark Mode" }}</span>
+  </button>
+</div>
+<div
+  class="signup-card d-flex flex-column align-items-center justify-content-center vh-100 bg-light" [ngClass]="{'bg-dark text-light': isDarkMode}"
+>
+  <div class="card shadow-lg p-4" style="width: 400px" [ngClass]="{'bg-dark text-light': isDarkMode}">
+    <!-- Titre et lien de connexion -->
+    <div class="card-title text-center mb-4">
+      <h1>Create Account</h1>
+      <span
+        >Already have an account?
+        <a routerLink="/login" class="text-decoration-none">Sign In</a></span
+      >
+    </div>
+
+    <!-- Formulaire d'inscription -->
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <!-- Champ Email -->
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="email"
+          placeholder="Email"
+          formControlName="email"
+        />
+        <div class="text-danger mt-1">
+          <span
+            *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].errors?.['required']"
+          >
+            Email is required.
+          </span>
+          <span
+            *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].errors?.['email']"
+          >
+            Invalid email format.
+          </span>
+        </div>
+      </div>
+
+      <!-- Champ Username -->
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          placeholder="Username"
+          formControlName="username"
+        />
+        <div class="text-danger mt-1">
+          <span
+            *ngIf="signupForm.controls['username'].touched && signupForm.controls['username'].errors?.['required']"
+          >
+            Username is required.
+          </span>
+        </div>
+      </div>
+
+      <!-- Champ Password -->
+      <div class="mb-3">
+        <div class="input-group">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            name="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="togglePasswordVisibility()"
+          >
+            <i [class]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+          </button>
+        </div>
+
+        <div class="text-danger mt-1">
+          <span
+            *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].errors?.['required']"
+          >
+            Password is required.
+          </span>
+          <span
+            *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].errors?.['minlength']"
+          >
+            Password must be at least 8 characters long.
+          </span>
+          <span
+            *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].errors?.['invalidPassword']"
+          >
+            Password must contain at least one uppercase letter, one lowercase
+            letter, one number, and one symbol.
+          </span>
+        </div>
+      </div>
+
+      <!-- Bouton Submit -->
+      <div class="d-grid">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!signupForm.valid"
+        >
+          Signup
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
