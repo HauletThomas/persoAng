@@ -12,18 +12,13 @@ export class AuthGuard implements  CanActivate {
   }
 
   canActivate(): boolean {
-    return this.checkAuth();
-  }
-
-  private checkAuth(): boolean {
-    //console.log("Guard Auth Key::"+ this.authService.get('auth-key'));
-
     if (this.authService.get('auth-key')) {
       return true;
     } else {
       this.router.navigate(['/login']);
       return false;
-    }
-  }
+    }  }
+
+
 
 };

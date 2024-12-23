@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [MatCardModule, CommonModule],
   templateUrl: './graph-config.component.html',
-  styleUrls: ['./graph-config.component.css']
+  styleUrls: ['./graph-config.component.css'],
 })
 export class GraphConfigComponent implements AfterViewInit {
   @ViewChild('svg') private svgRef!: ElementRef;
