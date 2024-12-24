@@ -6,12 +6,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { GraphConfigComponent } from './components/graph-config/graph-config.component';
 import { NgModule } from '@angular/core';
+import { RiotApiChampionWinrateComponent } from './components/riot-api-champion-winrate/riot-api-champion-winrate.component';
 
 export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
     { path: 'graph', component: GraphConfigComponent, canActivate: [AuthGuard]},
     { path: 'register', component: RegisterComponent },
+    { path: 'riotgames', component: RiotApiChampionWinrateComponent, canActivate: [AuthGuard]},
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: '**', component: DashboardComponent, canActivate: [AuthGuard]},
 ];

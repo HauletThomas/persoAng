@@ -1,0 +1,10 @@
+<div>
+  <input
+    type="text"
+    placeholder="Entrez NameGame#Tagline"
+    [(ngModel)]="searchInput"
+    (keyup.enter)="onSearch()"
+    class="search-input"
+  />
+  <button (click)="onSearch()" class="search-button">Rechercher</button>
+</div>
