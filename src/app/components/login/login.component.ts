@@ -66,7 +66,6 @@ export class LoginComponent implements OnInit {
     const formValue = this.userForm.value;
 
     if (formValue.username == '' || formValue.password == '') {
-      //alert('Wrong Credentilas');
       this.errorMessage = 'Username or password is missing.';
       return;
     }
@@ -85,19 +84,19 @@ export class LoginComponent implements OnInit {
           this.storage.set('username', decodedToken.sub);
         }
         // this.storage.set('username', res.);
-        console.log(res.token);
+        // console.log(res.token);
         this.integration.dashboard().subscribe({
           next: (dashboardres) => {
-            console.log("Dashboard res:" + dashboardres.response);
+            // console.log("Dashboard res:" + dashboardres.response);
             this.router.navigateByUrl('/dashboard');
           }, error: (err) => {
-            console.log("Dashboard error received :" + err);
+            // console.log("Dashboard error received :" + err);
             this.errorMessage = 'Failed to load dashboard.';
             this.storage.remove('auth-key');
           }
         });
       }, error: (err) => {
-        console.log("Error Received Response:" + err);
+        // console.log("Error Received Response:" + err);
         this.errorMessage = 'Invalid username or password.';
         this.storage.remove('auth-key');
       }

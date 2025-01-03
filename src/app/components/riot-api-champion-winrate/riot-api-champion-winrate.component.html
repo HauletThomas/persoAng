@@ -7,4 +7,7 @@
     class="search-input"
   />
   <button (click)="onSearch()" class="search-button">Rechercher</button>
+  <div *ngIf="this.matchStats">
+    {{ matchStats }}
+  </div>
 </div>

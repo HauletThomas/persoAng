@@ -23,9 +23,11 @@ export class RiotApiChampionWinrateComponent {
   count: number | undefined;
 
   matchListIds: any[] = [];
+  matchStats: any[] = [];
 
 
-  constructor(private riotApiService: RiotApiService){
+
+  constructor(private riotApiService: RiotApiService) {
 
   }
   onSearch(): void {
@@ -40,37 +42,41 @@ export class RiotApiChampionWinrateComponent {
       return;
     }
 
+
     this.riotApiService.getAccountByGameName(nameGame, tagLine).subscribe({
       next: (response) => {
         //in response (puuid, gameName, tagline)
-        console.log('Compte trouvé :', response);
-        // alert(`Compte trouvé : ${JSON.stringify(response)}`);
 
         this.puuid = response.puuid; // Récupérer le puuid du compte
-
-        this.riotApiService
-          .getMatchList(
-            this.puuid,
-            this.start = 2,
-            this.count = 20
-          )
-          .subscribe({
+        console.log(this.puuid);
+        this.riotApiService.getMatchById(this.puuid).subscribe({
             next: (matchResponse) => {
-              this.matchListIds = matchResponse; // Stocker les matchIds
-              console.log('Match IDs trouvés :', this.matchListIds);
+              this.matchStats = matchResponse; // Stocker les matchIds
+              console.log('Match stat trouvés :', this.matchStats);
             },
             error: (error: HttpErrorResponse) => {
-              console.error('Erreur lors de la récupération des match IDs :', error);
-              alert('Impossible de récupérer les match IDs. Vérifiez les informations saisies.');
+              console.error('Erreur lors de la récupération des match stats :', error);
+              alert('Impossible de récupérer les match stats. Vérifiez les informations saisies.');
             },
           });
+        // this.puuid = response.puuid; // Récupérer le puuid du compte
+        // this.riotApiService.getMatchList(this.puuid, 1, 20).subscribe({
+        //     next: (matchResponse) => {
+        //       this.matchStats = matchResponse; // Stocker les matchIds
+        //       console.log('Match stat trouvés :', this.matchStats);
+        //     },
+        //     error: (error: HttpErrorResponse) => {
+        //       console.error('Erreur lors de la récupération des match stats :', error);
+        //       alert('Impossible de récupérer les match stats. Vérifiez les informations saisies.');
+        //     },
+        //   });
       },
       error: (error: HttpErrorResponse) => {
         console.error('Erreur lors de la récupération du compte :', error);
         alert('Impossible de trouver le compte. Vérifiez les informations saisies.');
       }
     });
-    }
+  }
 
 
 }
