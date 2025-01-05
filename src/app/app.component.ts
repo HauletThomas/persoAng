@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   title = 'Perso';
-  isAuthCheckComplete = false;
+  isAuthCheckComplete = true;
 
   constructor(private storage: LocalStorageService) {}
 
