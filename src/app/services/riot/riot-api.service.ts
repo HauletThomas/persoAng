@@ -7,6 +7,10 @@ export interface MatchStatistics {
   losses: number;
   firstDragonGames: number;
   firstDragonWins: number;
+  firstHordeGames: number;
+  firstHordeWins: number;
+  sixHordeGames: number;
+  sixHordeWins: number;
   topAlliesWin: string[];
   topAlliesLoss: string[];
   topEnemiesWin: string[];
