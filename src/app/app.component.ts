@@ -6,16 +6,28 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
+  template: `
+    <div *ngIf="!isAuthCheckComplete; else mainApp">
+      <div class="loading-screen">
+        <!-- Indicateur de chargement -->
+        <p>Loading...</p>
+      </div>
+    </div>
+    <ng-template #mainApp>
+      <app-navbar></app-navbar>
+      <router-outlet></router-outlet>
+    </ng-template>
+  `,
   standalone: true,
   imports: [RouterOutlet, NavbarComponent, CommonModule],
-  templateUrl: './app.component.html',
+  // templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class AppComponent implements OnInit {
   title = 'Perso';
-  isAuthCheckComplete = true;
+  isAuthCheckComplete = false;
 
   constructor(private storage: LocalStorageService) {}
 

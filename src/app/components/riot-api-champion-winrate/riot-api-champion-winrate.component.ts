@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatchStatistics, RiotApiService } from '../../services/riot/riot-api.service';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './riot-api-champion-winrate.component.html',
-  styleUrl: './riot-api-champion-winrate.component.css'
+  styleUrl: './riot-api-champion-winrate.component.css',
+  encapsulation: ViewEncapsulation.None, // Désactive l'encapsulation CSS
 })
 export class RiotApiChampionWinrateComponent{
   searchInput: string = ''; // Variable pour stocker l'entrée utilisateur

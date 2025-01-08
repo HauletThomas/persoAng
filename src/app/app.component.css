@@ -1,3 +1,10 @@
+:host {
+  display: block;
+  /* //height: 100%; */
+  min-height: 100vh; /* S'assurer que tout le contenu prend au moins la hauteur de la fenêtre */
+  background-color: transparent; /* Ne pas écraser le style global */
+}
+
 .loading-screen {
   position: fixed;
   top: 0;
@@ -10,4 +17,10 @@
   align-items: center;
   color: white;
   font-size: 2em;
+}
+
+router-outlet {
+  display: block;
+  height: 100%; /* Permet au contenu de remplir tout l'espace */
+  flex-grow: 1; /* Le contenu principal s'étend pour remplir l'espace restant */
 }
