@@ -1,1 +1,10 @@
-<p>home works!</p>
+<div class="hero">
+  <h1>Welcome to My Angular and Springboot Project</h1>
+  <p>This is a project using Angular, Spring and PostgreSQL.</p>
+  <p>PS : You can draw</p>
+</div>
+<div class="color-palette">
+  <button *ngFor="let color of colors" [style.background]="color" (click)="changeColor(color)"></button>
+</div>
+<canvas id="drawingCanvas"></canvas>
+<button id="saveCanvas" (click)="saveCanvas()">Save Drawing</button>

@@ -76,21 +76,18 @@ export class LoginComponent implements OnInit {
     this.integration.doLogin(this.request).subscribe({
       next: (res) => {
         console.log("Received Response:" + res.token);
-        if (res.token !== undefined && res.token !==''){
+        if (res.token !== undefined && res.token !== '') {
           this.storage.set('auth-key', res.token);
           const decodedToken = this.integration.decodeJWT(res.token);
           console.log(decodedToken);
-           // Implémentez une fonction pour décoder le token si nécessaire.
+          // Implémentez une fonction pour décoder le token si nécessaire.
           this.storage.set('username', decodedToken.sub);
         }
-        // this.storage.set('username', res.);
-        // console.log(res.token);
+
         this.integration.dashboard().subscribe({
           next: (dashboardres) => {
-            // console.log("Dashboard res:" + dashboardres.response);
-            this.router.navigateByUrl('/dashboard');
+            this.router.navigateByUrl('/home');
           }, error: (err) => {
-            // console.log("Dashboard error received :" + err);
             this.errorMessage = 'Failed to load dashboard.';
             this.storage.remove('auth-key');
           }
