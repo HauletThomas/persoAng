@@ -3,8 +3,21 @@
   <p>This is a project using Angular, Spring and PostgreSQL.</p>
   <p>PS : You can draw</p>
 </div>
-<div class="color-palette">
-  <button *ngFor="let color of colors" [style.background]="color" (click)="changeColor(color)"></button>
+<div class="controls">
+<div
+    class="color-palette"
+    id="colorPalette"
+    (mouseenter)="onPaletteEnter()"
+    (mouseleave)="onPaletteLeave()"
+  >
+    <button
+      *ngFor="let color of colors"
+      [style.backgroundColor]="color"
+      (click)="changeColor(color)"
+    ></button>
+  </div>
+<button id="resetCanvas" class="reset-button" (click)="resetCanvas()">Reset Drawing</button>
+<button id="saveCanvas" class="save-button" (click)="saveCanvas()">Save Drawing</button>
 </div>
+
 <canvas id="drawingCanvas"></canvas>
-<button id="saveCanvas" (click)="saveCanvas()">Save Drawing</button>
